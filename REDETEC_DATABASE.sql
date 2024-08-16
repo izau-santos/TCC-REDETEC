@@ -362,7 +362,30 @@ CREATE TABLE IF NOT EXISTS `New_TCC`.`Anexo` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+CREATE TABLE Vagas(
+	Id_Vagas INT PRIMARY KEY AUTO_INCREMENT,
+    Id_Professor INT NOT NULL,
+    Id_Curso INT NOT NULL,
+    Nome_Vaga VARCHAR(50) NOT NULL,
+    Descricao_Vaga VARCHAR(300) NOT NULL,
+    Data_Vaga_Publicada TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_Vaga_Professor 
+		FOREIGN KEY (Id_Professor) 
+		REFERENCES professor (Id_Professor),
+	CONSTRAINT fk_Vaga_Curso
+		FOREIGN KEY (Id_Curso)
+        REFERENCES curso (id_Curso)
+);
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+
+
+
+
+
+
+
+
