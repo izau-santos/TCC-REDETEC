@@ -132,10 +132,10 @@ CREATE TABLE IF NOT EXISTS `New_TCC`.`Comentario` (
 CREATE TABLE IF NOT EXISTS `New_TCC`.`Professor` (
   `Id_Professor` INT NOT NULL AUTO_INCREMENT,
   `Nome_Professor` VARCHAR(45) NOT NULL,
+  `Password_Professor` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`Id_Professor`),
   UNIQUE INDEX `Nome_Professor_UNIQUE` (`Nome_Professor` ASC))
 ;
-
 
 -- -----------------------------------------------------
 -- Table `New_TCC`.`Professor_Curso`
@@ -377,6 +377,49 @@ CREATE TABLE Vagas(
         REFERENCES curso (id_Curso)
 );
 
+ALTER TABLE professor CHANGE COLUMN Password_Professor Senha_Professor VARCHAR(50) NOT NULL;
+
+ALTER TABLE `new_tcc`.`anexo` 
+ADD COLUMN `Deletado_Anexo` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Data_Anexo`;
+
+ALTER TABLE `new_tcc`.`comentario` 
+ADD COLUMN `Deletado_comentario` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Data_Comentario`;
+
+ALTER TABLE `new_tcc`.`conexao` 
+ADD COLUMN `Deletada_Conexao` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Data_Conexao`;
+
+ALTER TABLE `new_tcc`.`curso` 
+ADD COLUMN `Deletado_Curso` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Horario_Curso`;
+
+ALTER TABLE `new_tcc`.`curtida` 
+ADD COLUMN `Deletada_Curtida` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Data_curtida`;
+
+ALTER TABLE `new_tcc`.`grupo` 
+ADD COLUMN `Deletado_Grupo` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Data_Criacao`;
+
+ALTER TABLE `new_tcc`.`materia` 
+ADD COLUMN `Deletado_Materia` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Modulo_Materia`;
+
+ALTER TABLE `new_tcc`.`matricula` 
+ADD COLUMN `Deletado_Matricula` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Id_Curso`;
+
+ALTER TABLE `new_tcc`.`mensagem_privada` 
+ADD COLUMN `Deletado_Mensagem` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Data_Mensagem`;
+
+ALTER TABLE `new_tcc`.`perfil` 
+ADD COLUMN `Deletado_Perfil` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Data_Atualizacao_Perfil`;
+
+ALTER TABLE `new_tcc`.`postagem` 
+ADD COLUMN `Deletado_Postagem` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Data_postagem`;
+
+ALTER TABLE `new_tcc`.`professor` 
+ADD COLUMN `Deletado_Professor` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Senha_Professor`;
+
+ALTER TABLE `new_tcc`.`usuario` 
+ADD COLUMN `Deletado_Usuario` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Nivel_acesso`;
+
+ALTER TABLE `new_tcc`.`vagas` 
+ADD COLUMN `Deletado_Vagas` TINYINT(4) NOT NULL DEFAULT 0 AFTER `Data_Vaga_Publicada`;
 
 
 
@@ -385,7 +428,4 @@ CREATE TABLE Vagas(
 
 
 
-
-
-
-
+ 
